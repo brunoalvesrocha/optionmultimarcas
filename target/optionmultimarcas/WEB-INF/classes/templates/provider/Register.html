@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="LayoutPadrao">
+
+<head>
+	<title>Cadastro de Fornecedor</title>
+</head>
+
+<section layout:fragment="conteudo">
+    <form class="form-horizontal" method="POST" th:action="@{/providers}" th:object="${provider}">
+    	<div layout:include="MensagemGeral"></div>
+    	<div layout:include="MensagemErro"></div>
+    
+    	<div class="panel panel-default">
+    		<div class="panel-heading">
+    			<div class="clearfix">
+	   				<h1 class="panel-title aw-titulo-panel">Novo Fornecedor</h1>
+	   				<a class="btn btn-link aw-link-panel" th:href="@{/providers/}">Voltar para pesquisa</a>
+	   			</div>
+    		</div>
+    		
+    		<div class="panel-body container-fluid">
+    			<input type="hidden" th:field="*{id}"/>
+    		
+				<div class="form-group" th:classappend="${#fields.hasErrors('contact')} ? has-error">
+					<label for="nome" class="col-sm-2 control-label">Nome</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="nome" th:field="*{contact}"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('store')} ? has-error">
+					<label for="store" class="col-sm-2 control-label">Loja</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="store" th:field="*{store}"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
+					<label for="email" class="col-sm-2 control-label">E-mail</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="email" th:field="*{email}"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('bank')} ? has-error">
+					<label for="bank" class="col-sm-2 control-label">Banco</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="bank" th:field="*{bank}"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('agency')} ? has-error">
+					<label for="agency" class="col-sm-2 control-label">Agencia</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="agency" th:field="*{agency}"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('account')} ? has-error">
+					<label for="account" class="col-sm-2 control-label">Conta</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="account" th:field="*{account}"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('address')} ? has-error">
+					<label for="address" class="col-sm-2 control-label">Endereço</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="address" th:field="*{address}"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('offeredProducts')} ? has-error">
+					<label for="offeredProducts" class="col-sm-2 control-label">Produtos</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="offeredProducts" th:field="*{offeredProducts}"
+							placeholder="Ex: oculos; shorts; camiseta;"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('paymentType')} ? has-error">
+					<label for="paymentType" class="col-sm-2 control-label">Pagamento</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="paymentType" th:field="*{paymentType}"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('phone')} ? has-error">
+					<label for="phone" class="col-sm-2 control-label">Cel.</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control js-phone" id="phone" th:field="*{phone}"/>
+					</div>
+				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('website')} ? has-error">
+					<label for="website" class="col-sm-2 control-label">Site</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="website" th:field="*{website}"
+							placeholder="Ex: www.loja.com.br"/>
+					</div>
+				</div>				
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+				</div>
+			</div>
+    	</div>
+    </form>
+</section>
+</html>

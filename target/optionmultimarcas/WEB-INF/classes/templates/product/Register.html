@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="LayoutPadrao">
+
+<head>
+	<title>Cadastro Produto</title>
+</head>
+
+<section layout:fragment="conteudo">
+    <form class="form-horizontal" method="POST" th:action="@{/products}" th:object="${product}">
+    	<div layout:include="MensagemGeral"></div>
+    	<div layout:include="MensagemErro"></div>
+    
+    	<div class="panel panel-default">
+    		<div class="panel-heading">
+    			<div class="clearfix">
+	   				<h1 class="panel-title aw-titulo-panel">Novo Produto</h1>
+	   				<a class="btn btn-link aw-link-panel" th:href="@{/products/}">Voltar para pesquisa</a>
+	   			</div>
+    		</div>
+    		
+    		<div class="panel-body container-fluid">
+    			<input type="hidden" th:field="*{id}"/>
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('aquisitionDate')} ? has-error">
+					<label for="aquisitionDate" class="col-sm-2 control-label">Data de Compra</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="aquisitionDate" th:field="*{aquisitionDate}"
+							data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+							data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom"/>
+					</div>
+				</div>
+    		
+				<div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error">
+					<label for="nome" class="col-sm-2 control-label">Nome</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="nome" th:field="*{name}"/>
+					</div>
+				</div>				
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('model')} ? has-error">
+					<label for="model" class="col-sm-2 control-label">Modelo</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="model" th:field="*{model}"/>
+					</div>
+				</div>				
+
+				<div class="form-group">
+					<label for="provider" class="col-sm-2 control-label">Fornecedor</label>
+					<div class="col-sm-2"> 
+						<select class="form-control" th:field="*{provider}">
+						<option value=""> Selecione </option>
+							<option th:each="provider : ${providers}" th:value="${provider.id}" 
+								th:text="${provider.store}"/>
+						</select>
+					</div>
+				</div>				
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('amount')} ? has-error">
+					<label for="amount" class="col-sm-2 control-label">Quantidade</label>
+					<div class="col-sm-2"> 
+						<input type="text" class="form-control" id="amount" th:field="*{amount}"/>
+					</div>
+				</div>				
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('purchasePrice')} ? has-error">
+					<label for="purchasePrice" class="col-sm-2 control-label">Valor Compra</label>
+					<div class="col-sm-2"> 
+						<input type="text" class="form-control js-currency" id="purchasePrice" th:field="*{purchasePrice}"/>
+					</div>
+				</div>				
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('saleValue')} ? has-error">
+					<label for="saleValue" class="col-sm-2 control-label">Valor Venda</label>
+					<div class="col-sm-2"> 
+						<input type="text" class="form-control js-currency" id="saleValue" th:field="*{saleValue}"/>
+					</div>
+				</div>							
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('description')} ? has-error">
+					<label for="description" class="col-sm-2 control-label">Descrição</label>
+					<div class="col-sm-4">
+						<textarea rows="3" class="form-control" id="description" th:field="*{description}"></textarea> 
+					</div>
+				</div>				
+								
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+				</div>
+			</div>
+    	</div>
+    </form>
+</section>
+</html>

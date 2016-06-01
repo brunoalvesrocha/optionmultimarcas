@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="LayoutPadrao">
+
+<head>
+	<title>Login de Usuario</title>
+</head>
+
+<section layout:fragment="conteudo">
+    <form class="form-horizontal" method="POST" th:action="@{/efetuaLogin}">
+		Login: <input type="text" name="user"/><br/>
+		Senha: <input type="text" name="password"/><br/>
+		
+		<input type="submit" value="Entrar"/>
+    </form>
+</section>
+</html>

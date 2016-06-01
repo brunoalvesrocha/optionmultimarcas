@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaft.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+
+<head>
+<title>Pesquisa de Produtos</title>
+</head>
+
+<section layout:fragment="conteudo">
+	<span layout:include="MensagemGeral"></span>
+	
+	<div class="panel panel-default">
+			<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title aw-titulo-panel">Pesquisa de Produtos</h1>
+				<a class="btn btn-link aw-link-panel" th:href="@{/products/novo}">Novo Produto</a>
+			</div>
+		</div>
+
+		<div class="panel-body">
+
+		<form method="GET" class="form-horizontal" th:action="@{/products}" th:object="${filtro}">
+			<div class="form-group">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<input class="form-control" placeholder="Qual produto voce está procurando?"
+							autofocus="autofocus" th:field="*{descricao}"></input>
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-default">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>		
+		
+		<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th class="text-center col-md-1">#</th>
+							<th class="text-center col-md-1">Data Compra</th>
+							<th class="text-center col-md-1">Nome</th>
+							<th class="text-center col-md-1">Modelo</th>
+							<th class="text-center col-md-1">Fornecedor</th>
+							<th class="text-center col-md-1">Estoque</th>
+							<th class="text-center col-md-1">Compra</th>
+							<th class="text-center col-md-1">Venda</th>
+							<th class="text-center col-md-1">Descrição</th>
+							<th class="col-md-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="product : ${products}">
+							<td class="text-center" th:text="${product.id}"></td>
+							<td class="text-center" th:text="${{product.aquisitionDate}}"></td>
+							<td class="text-center" th:text="${product.name}"></td>
+							<td class="text-center" th:text="${product.model}"></td>
+							<td class="text-center" th:text="${product.provider.store}"></td>
+<!-- 							<td class="text-center" th:text="${product.amount}"></td> -->
+							<td class="text-center">
+								<span class="label label-amount" th:text="${product.amount}"
+									th:classappend="${product.amount eq 0 ? 'label-danger' : 'label-success'}"></span>
+							</td>
+
+							<td class="text-center" th:text="|R$ ${{product.purchasePrice}}|"></td>
+							<td class="text-center" th:text="${product.saleValue}"></td>
+							<td class="text-center" th:text="${product.description}"></td>
+
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/products/{id}(id=${product.id})}"
+									title="Editar" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModalProduct"
+									th:attr="data-id=${product.id}, data-name=${product.name}"
+									title="Excluir" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="6" th:if="${#lists.isEmpty(products)}">Nenhum produto foi encontrado.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div layout:include="/product/DialogoConfirmacaoExclusaoProduct"></div>
+		
+	</div>
+</section>
+</html>
