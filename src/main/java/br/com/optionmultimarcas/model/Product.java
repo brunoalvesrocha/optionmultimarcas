@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -57,9 +56,6 @@ public class Product {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "provider_id", referencedColumnName = "id")
 	private Provider provider;
-	
-	@Transient
-	private Double sumProft;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub

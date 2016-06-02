@@ -34,6 +34,7 @@ public class Provider {
 	@NotEmpty(message = "The field email is necessary.")
 	private String email;
 	
+	private String accountName;
 	private String phone;
 	private String bank;
 	private String agency;
@@ -48,7 +49,8 @@ public class Provider {
 	}
 	
 	public Provider(Calendar registerDate, String contact, String store, String email, String bank, String agency,
-			String account, String address, String offeredProducts, String paymentType, String website, String phone) {
+			String account, String address, String offeredProducts, String paymentType, String website, String phone,
+			String accountName) {
 
 		this.registerDate = registerDate;
 		this.contact = contact;
@@ -62,6 +64,7 @@ public class Provider {
 		this.paymentType = paymentType;
 		this.website = website;
 		this.phone = phone;
+		this.accountName = accountName;
 	}
 	public Long getId() {
 		return id;
@@ -143,6 +146,15 @@ public class Provider {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 
 	@Override

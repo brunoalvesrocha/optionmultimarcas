@@ -1,6 +1,11 @@
 jQuery(function($) {
-	$('.js-phone').mask("(99) 99999-9999");
+	$('.phone-js').mask("(99) 99999-9999");
 });
+
+jQuery(function($) {
+	$('.cep-js').mask("99999-999");
+});
+
 
 $(document).ready(function() {
 

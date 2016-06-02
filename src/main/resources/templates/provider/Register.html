@@ -42,6 +42,12 @@
 						<input type="text" class="form-control" id="email" th:field="*{email}"/>
 					</div>
 				</div>				
+				<div class="form-group" th:classappend="${#fields.hasErrors('accountName')} ? has-error">
+					<label for="accountName" class="col-sm-2 control-label">Resp. Conta</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="accountName" th:field="*{accountName}"/>
+					</div>
+				</div>				
 				<div class="form-group" th:classappend="${#fields.hasErrors('bank')} ? has-error">
 					<label for="bank" class="col-sm-2 control-label">Banco</label>
 					<div class="col-sm-4"> 
@@ -82,7 +88,7 @@
 				<div class="form-group" th:classappend="${#fields.hasErrors('phone')} ? has-error">
 					<label for="phone" class="col-sm-2 control-label">Cel.</label>
 					<div class="col-sm-4"> 
-						<input type="text" class="form-control js-phone" id="phone" th:field="*{phone}"/>
+						<input type="text" class="form-control phone-js" id="phone" th:field="*{phone}"/>
 					</div>
 				</div>				
 				<div class="form-group" th:classappend="${#fields.hasErrors('website')} ? has-error">
