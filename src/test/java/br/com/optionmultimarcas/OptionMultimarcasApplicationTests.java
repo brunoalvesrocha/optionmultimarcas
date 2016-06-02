@@ -1,4 +1,4 @@
-package com.algaworks.cobranca;
+package br.com.optionmultimarcas;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,7 @@ import br.com.optionmultimarcas.OptionMultimarcasApplication;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = OptionMultimarcasApplication.class)
 @WebAppConfiguration
-public class CobrancaApplicationTests {
+public class OptionMultimarcasApplicationTests {
 
 	@Test
 	public void contextLoads() {
